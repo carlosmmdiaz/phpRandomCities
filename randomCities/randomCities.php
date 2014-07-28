@@ -26,6 +26,9 @@ class RandomCities {
             }
         }
         fclose($file);
+
+        unset($this->list[0]);
+
     }
 
     // Pick up a Random City:
@@ -40,11 +43,11 @@ class RandomCities {
     function getRandomCities($filename) {
 
         // Get cities from the file:
-        readfile($filename);
+        $this->read_file($filename);
 
-        foreach ($this->list as $citiesByLetter) {
+        foreach ($this->list as $letter =>$list) {
            
-           echo $letter."- ".pickupRandomCity($citiesByLetter)."<br>";  
+            echo $letter."- ".$this->pickupRandomCity($list)."<br>";  
         }
     }
 }
